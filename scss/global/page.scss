@@ -1,8 +1,27 @@
+body {
+	background: $light-grey;
+
+}
 #heading {
 	background: #EEEEEE;
+	margin-bottom: 20px;
 	
 	h5 {
 		margin: 0;
 		padding: 10px 0;
+	}
+}
+
+#widgets {
+
+	.widget {
+		h3 {
+			text-align: center;
+			padding: 30px;
+			background: #fff;
+			color: $topbar-background;
+			border-radius: 5px;
+			border: 1px solid darken($light-grey, 2%);
+		}
 	}
 }
