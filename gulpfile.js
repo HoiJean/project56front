@@ -9,9 +9,11 @@ var sassPaths = [
 var scriptsPaths = [
     'bower_components/underscore/underscore.js',
     'bower_components/backbone/backbone.js',
+    'application/appInit.js',
     'application/models/*.js',
     'application/collections/*.js',
     'application/routes/*.js',
+    'application/main.js',
 ];
 
 gulp.task('scripts', function() {

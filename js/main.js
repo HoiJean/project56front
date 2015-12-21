@@ -3442,10 +3442,25 @@
 
 }));
 
-var ConnectionModel = Backbone.Model.extend({
+(function(){
+	window.App = {
+		Models: {},
+		Collections: {},
+		Views: {}
+	};
+
+	window.template = function(id){
+		return _.template( $('#' + id).html() );
+	};
+
+})();
+App.Models.Connection = Backbone.Model.extend({
 	defaults: {
-		'unit_id': 5,
-		'value': 234,
-		
+		'unit_id': 2034,
+		'value': 228
 	}
 });
+
+
+
+var myConnection = new App.Models.Connection();
