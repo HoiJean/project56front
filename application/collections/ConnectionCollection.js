@@ -1,3 +1,8 @@
 App.Collections.ConnectionCollection = Backbone.Collection.extend({
-	model: App.Models.Connection
+	url: 'http://api.webtronix.nl/api/connections/',
+	model: App.Models.Connection,
+
+	initialize: function() {
+		
+	}
 });

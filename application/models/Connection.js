@@ -1,7 +1,10 @@
 App.Models.Connection = Backbone.Model.extend({
+	url: 'http://api.webtronix.nl/api/connections/',
 	defaults: {
-		'unit_id': 2034,
-		'value': 228
+		datetime: "",
+		value: "test value",
+		port: "",
+		unit_id: ""
 	}
 });
 

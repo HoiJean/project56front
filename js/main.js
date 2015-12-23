@@ -3455,12 +3455,44 @@
 
 })();
 App.Models.Connection = Backbone.Model.extend({
+	url: 'http://api.webtronix.nl/api/connections/',
 	defaults: {
-		'unit_id': 2034,
-		'value': 228
+		datetime: "",
+		value: "test value",
+		port: "",
+		unit_id: ""
 	}
 });
 
 
+App.Collections.ConnectionCollection = Backbone.Collection.extend({
+	url: 'http://api.webtronix.nl/api/connections/',
+	model: App.Models.Connection,
+
+	initialize: function() {
+		
+	}
+});
+App.Views.ConnectionView = Backbone.View.extend({
+	el: $(".connection"),
+
+	initialize: function() {
+		this.render();
+
+		console.log("Connection View");
+	},
+
+	render: function() {
+		var template = _.template( $("#connection_template").html(), {} );
+		this.$el.html(template);
+
+		return this;
+	}
+});
 
 var myConnection = new App.Models.Connection();
+var myCollection = new App.Collections.ConnectionCollection();
+
+myCollection.fetch({success: function(data){
+    console.log(data);
+}});

@@ -12,6 +12,7 @@ var scriptsPaths = [
     'application/appInit.js',
     'application/models/*.js',
     'application/collections/*.js',
+    'application/views/*.js',
     'application/routes/*.js',
     'application/main.js',
 ];
