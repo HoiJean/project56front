@@ -3,6 +3,6 @@ App.Collections.ConnectionCollection = Backbone.Collection.extend({
 	model: App.Models.Connection,
 
 	initialize: function() {
-		
+		// this.fetch();
 	}
 });

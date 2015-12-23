@@ -45,10 +45,8 @@
 
     <div id="content">
         <div id="widgets" class="row">
-            <div class="connection">Conn</div>
-
             <div class="widget medium-4 columns">
-                <h3>12 Connecties</h3>
+                <h3 class="connectionsCount">12 Connecties</h3>
             </div>
             <div class="widget medium-4 columns">
                 <h3>435 Events</h3>
@@ -67,6 +65,11 @@
     
     <script type="text/template" id="connection_template">
         <h4>Helooo template</h4>
+    </script>
+
+    <script type="text/template" id="widgets_template">
+        <%= connectionsCount %>
+        <small>Connecties</small>
     </script>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
