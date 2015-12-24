@@ -8,6 +8,7 @@ var sassPaths = [
 ];
 
 var scriptsPaths = [
+    'bower_components/webcomponentsjs/webcomponents-lite.js',
     'bower_components/underscore/underscore.js',
     'bower_components/backbone/backbone.js',
     'application/appInit.js',
