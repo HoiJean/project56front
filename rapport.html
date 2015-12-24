@@ -1,0 +1,155 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CityGis - Dashboard</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/foundation-icons.css">
+</head>
+<body>
+    <header id="header">
+        <div class="title-bar" data-responsive-toggle="gis-menu" data-hide-for="medium">
+            <button class="menu-icon" type="button" data-toggle></button>
+            <div class="title-bar-title">Menu</div>
+        </div>
+
+        <div class="top-bar" id="gis-menu">
+            <div class="row">
+                <div class="">
+                    <div class="top-bar-left">
+                        <ul class="dropdown menu" data-dropdown-menu>
+                        <li class="menu-text">
+                            <h1 id="logo">
+                                <i class="fi-marker"></i>
+                                Citygis
+                            </h1>
+                        </li>
+                        <li class="active"><a href="#">Dashboard</a></li>
+                        <li><a href="#">Rapport</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div id="heading">
+        <div class="row">
+            <div class="medium-12 columns">
+                <h5>Dashboard</h5>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+        <div id="widgets" class="row">
+            <div class="widget medium-4 columns">
+                <h3 class="connectionsCount">12 motoren aan</h3>
+            </div>
+            <div class="widget medium-4 columns">
+                <h3>435 vertragingen</h3>
+            </div>
+            <div class="widget medium-4 columns">
+                <h3>7643 test</h3>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="medium-12">
+
+                <h2>Connecties</h2>
+
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <th>Datum</th>
+                      <th>Verbonden</th>
+                      <th>Port</th>
+                      <th>Auto ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11-11-2016</td>
+                      <td>1</td>
+                      <td>11111</td>
+                      <td>8378632</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+
+            <div class="medium-12">
+
+                <h2>Events</h2>
+
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <th>Datum</th>
+                      <th>Verbonden</th>
+                      <th>Port</th>
+                      <th>Auto ID</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11-11-2016</td>
+                      <td>1</td>
+                      <td>11111</td>
+                      <td>8378632</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+
+            <div class="medium-12">
+
+                <h2>Connecties</h2>
+
+                <table width="100%">
+                  <thead>
+                    <tr>
+                      <th>Begindatum</th>
+                      <th>Einddatum</th>
+                      <th>Type</th>
+                      <th>Min</th>
+                      <th>Max</th>
+                      <th>Sum</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>11-11-2016</td>
+                      <td>11-11-2016</td>
+                      <td>1</td>
+                      <td>10</td>
+                      <td>20</td>
+                      <td>15</td>
+                    </tr>
+                  </tbody>
+                </table>
+            </div>
+
+
+        </div>
+    </div>
+    
+    <script type="text/template" id="connection_template">
+        <h4>Helooo template</h4>
+    </script>
+
+    <script type="text/template" id="widgets_template">
+        <%= connectionsCount %>
+        <small>Connecties</small>
+    </script>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/what-input/what-input.js"></script>
+    <script src="bower_components/foundation-sites/dist/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
