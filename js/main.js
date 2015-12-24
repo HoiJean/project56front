@@ -3465,9 +3465,69 @@ App.Models.Connection = Backbone.Model.extend({
 });
 
 
+App.Models.Event = Backbone.Model.extend({
+	url: 'http://api.webtronix.nl/api/events/',
+	defaults: {
+		datetime: "",
+		value: "",
+		port: "",
+		unit_id: ""
+	}
+});
+
+
+App.Models.Monitoring = Backbone.Model.extend({
+	url: 'http://api.webtronix.nl/api/monitoring/',
+	defaults: {
+		datetime: "",
+		begin_time: "",
+		end_time: "",
+		type: "",
+		min: "",
+		max: "",
+		sum: "",
+	}
+});
+
+
+App.Models.Position = Backbone.Model.extend({
+	url: 'http://api.webtronix.nl/api/positions/',
+	defaults: {
+		datetime: "",
+		value: "test value",
+		port: "",
+		unit_id: ""
+	}
+});
+
+
 App.Collections.ConnectionCollection = Backbone.Collection.extend({
 	url: 'http://api.webtronix.nl/api/connections/',
 	model: App.Models.Connection,
+
+	initialize: function() {
+		// this.fetch();
+	}
+});
+App.Collections.EventCollection = Backbone.Collection.extend({
+	url: 'http://api.webtronix.nl/api/events/',
+	model: App.Models.Event,
+
+	initialize: function() {
+		// this.fetch();
+	}
+});
+App.Collections.MonitoringCollection = Backbone.Collection.extend({
+	url: 'http://api.webtronix.nl/api/monitoring/',
+	model: App.Models.Monitoring,
+
+	initialize: function() {
+		// this.fetch();
+	}
+});
+App.Collections.PositionCollection = Backbone.Collection.extend({
+	url: 'http://api.webtronix.nl/api/positions/',
+	model: App.Models.Position,
 
 	initialize: function() {
 		// this.fetch();
@@ -3494,7 +3554,7 @@ App.Views.ConnectionView = Backbone.View.extend({
 App.Views.ConnectionWidgetView = Backbone.View.extend({
 	el: $(".connectionsCount"),
 
-	template: _.template( $("#widgets_template").html() ),
+	template: _.template( $("#widget_connection_template").html() ),
 
 	initialize: function() {
 		console.log("Widget Connection created.");
@@ -3511,12 +3571,115 @@ App.Views.ConnectionWidgetView = Backbone.View.extend({
 		return this;
 	}
 });
+App.Views.EventView = Backbone.View.extend({
+	el: $(".event"),
+
+	initialize: function() {
+		this.render();
+
+		console.log("Event View");
+	},
+
+	render: function() {
+		var template = _.template( $("#event_template").html(), this.model.toJSON() );
+		this.$el.html(template);
+
+		return this;
+	}
+});
+
+// Widget for connection
+App.Views.EventWidgetView = Backbone.View.extend({
+	el: $(".eventCount"),
+
+	template: _.template( $("#widget_event_template").html() ),
+
+	initialize: function() {
+		console.log("Widget Event created.");
+		console.log("Counting..." + this.model);
+		this.render();
+	},
+
+	render: function() {
+		var data = {eventsCount: this.model};
+
+		var temp = this.template(data);
+		this.$el.html(temp);
+
+		return this;
+	}
+});
+App.Views.ConnectionView = Backbone.View.extend({
+	el: $(".monitoring"),
+
+	initialize: function() {
+		this.render();
+
+		console.log("Monitoring View");
+	},
+
+	render: function() {
+		var template = _.template( $("#monitoring_template").html(), this.model.toJSON() );
+		this.$el.html(template);
+
+		return this;
+	}
+});
+
+// Widget for Monitoring
+App.Views.MonitoringWidgetView = Backbone.View.extend({
+	el: $(".monitoringCount"),
+
+	template: _.template( $("#widget_monitoring_template").html() ),
+
+	initialize: function() {
+		console.log("Widget Monitoring created.");
+		console.log("Counting..." + this.model);
+		this.render();
+	},
+
+	render: function() {
+		var data = {monitoringsCount: this.model};
+
+		var temp = this.template(data);
+		this.$el.html(temp);
+
+		return this;
+	}
+});
 
 var myConnection = new App.Models.Connection();
-var myCollection = new App.Collections.ConnectionCollection();
+var connectionCollection = new App.Collections.ConnectionCollection();
+var eventCollection = new App.Collections.EventCollection();
+var monitoringCollection = new App.Collections.MonitoringCollection();
 
-myCollection.fetch({success: function(data){
+connectionCollection.fetch({success: function(data){
 	var connectionCount = data.length;
 
     var myConnectionWidgetView = new App.Views.ConnectionWidgetView({model: connectionCount });
 }});
+
+eventCollection.fetch({success: function(data){
+	var eventCount = data.length;
+
+    var myEventWidgetView = new App.Views.EventWidgetView({model: eventCount });
+}});
+
+monitoringCollection.fetch({success: function(data){
+	var monitoringCount = data.length;
+
+    var myMonitoringWidgetView = new App.Views.MonitoringWidgetView({model: monitoringCount });
+}});
+
+var AppRouter = Backbone.Router.extend({
+	routes: {
+		"test" : "testRoute"
+	},
+
+	testRoute: function() {
+		console.log("Testing Routes");
+	}
+});
+
+var router = new AppRouter();
+Backbone.history.start();

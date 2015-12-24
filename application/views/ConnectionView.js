@@ -19,7 +19,7 @@ App.Views.ConnectionView = Backbone.View.extend({
 App.Views.ConnectionWidgetView = Backbone.View.extend({
 	el: $(".connectionsCount"),
 
-	template: _.template( $("#widgets_template").html() ),
+	template: _.template( $("#widget_connection_template").html() ),
 
 	initialize: function() {
 		console.log("Widget Connection created.");
