@@ -1,11 +1,19 @@
 var app = angular.module('citygis', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope, connectionService) {
+app.controller('MainCtrl', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
 	connectionService.getConnections().then(function(response) {
 		// Connections
 		$scope.connectionsCount = response.data.length;
+	});
+
+	eventService.getEvents().then(function(response) {
+		$scope.eventsCount = response.data.length;
+	});
+
+	monitoringService.getMonitoring().then(function(response) {
+		$scope.monitoringsCount = response.data.length;
 	});
 
 });
@@ -16,10 +24,6 @@ app.config(['$routeProvider', function($routeProvider) {
 		.when('/', {
 			controller: 'MainCtrl',
 			templateUrl: './templates/main.html'
-		})
-		.when('/test', {
-			controller: 'TestController',
-			templateUrl: './templates/test.html'
 		})
 		.otherwise({ redirectTo: '/'});
 }]);

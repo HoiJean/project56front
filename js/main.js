@@ -32440,12 +32440,20 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 var app = angular.module('citygis', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope, connectionService) {
+app.controller('MainCtrl', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
 	connectionService.getConnections().then(function(response) {
 		// Connections
 		$scope.connectionsCount = response.data.length;
+	});
+
+	eventService.getEvents().then(function(response) {
+		$scope.eventsCount = response.data.length;
+	});
+
+	monitoringService.getMonitoring().then(function(response) {
+		$scope.monitoringsCount = response.data.length;
 	});
 
 });
@@ -32457,12 +32465,12 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'MainCtrl',
 			templateUrl: './templates/main.html'
 		})
-		.when('/test', {
-			controller: 'TestController',
-			templateUrl: './templates/test.html'
-		})
 		.otherwise({ redirectTo: '/'});
 }]);
+app.controller('EventController', function($scope, eventService) {
+
+	
+});
 app.controller('RapportController', function($scope) {
 	$scope.message = "Mijn test";
 });
@@ -32475,6 +32483,22 @@ app.service('connectionService', function($http, $q) {
 	var allConnections = {};
 
 	this.getConnections = function() {
+		return $http.get(url);
+	}
+
+});  
+app.service('eventService', function($http, $q) {
+	var url = "http://api.webtronix.nl/api/events";
+
+	this.getEvents = function() {
+		return $http.get(url);
+	}
+
+});  
+app.service('monitoringService', function($http, $q) {
+	var url = "http://api.webtronix.nl/api/monitoring";
+
+	this.getMonitoring = function() {
 		return $http.get(url);
 	}
 
