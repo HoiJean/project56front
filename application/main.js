@@ -18,12 +18,15 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 
 });
 
-
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			controller: 'MainCtrl',
 			templateUrl: './templates/main.html'
+		})
+		.when('/', {
+			controller: 'RapportController',
+			templateUrl: './templates/rapport.html'
 		})
 		.otherwise({ redirectTo: '/'});
 }]);

@@ -32458,12 +32458,15 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 
 });
 
-
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			controller: 'MainCtrl',
 			templateUrl: './templates/main.html'
+		})
+		.when('/', {
+			controller: 'RapportController',
+			templateUrl: './templates/rapport.html'
 		})
 		.otherwise({ redirectTo: '/'});
 }]);
@@ -32471,8 +32474,15 @@ app.controller('EventController', function($scope, eventService) {
 
 	
 });
-app.controller('RapportController', function($scope) {
+app.controller('RapportController', function($scope, connectionService) {
 	$scope.message = "Mijn test";
+
+	connectionService.getConnections().then(function(response) {
+		$scope.connectionsCount = response.data;
+
+		console.log(response.data);
+	});
+
 });
 app.controller('TestController', function($scope) {
 	$scope.message = "Mijn test";
