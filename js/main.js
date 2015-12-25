@@ -32440,8 +32440,14 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 var app = angular.module('citygis', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function($scope, connectionService) {
 	$scope.message = "Connecties uit angular";
+
+	connectionService.getConnections().then(function(response) {
+		// Connections
+		$scope.connectionsCount = response.data.length;
+	});
+
 });
 
 
@@ -32449,7 +32455,7 @@ app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
 			controller: 'MainCtrl',
-			templateUrl: './templates/test.html'
+			templateUrl: './templates/main.html'
 		})
 		.when('/test', {
 			controller: 'TestController',
@@ -32460,3 +32466,13 @@ app.config(['$routeProvider', function($routeProvider) {
 app.controller('TestController', function($scope) {
 	$scope.message = "Mijn test";
 }); 
+app.service('connectionService', function($http, $q) {
+	var url = "http://api.webtronix.nl/api/connections";
+
+	var allConnections = {};
+
+	this.getConnections = function() {
+		return $http.get(url);
+	}
+
+});  
