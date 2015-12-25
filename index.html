@@ -52,29 +52,8 @@
         </div>
     </div>
 
-    <div id="content" ng-controller="MainCtrl">
-        <div id="widgets" class="row">
-            <div class="widget medium-4 columns">
-                <h3 class="connectionsCount">{{ message }}</h3>
-            </div>
-            <div class="widget medium-4 columns">
-                <h3 class="eventCount">Events</h3>
-            </div>
-            <div class="widget medium-4 columns">
-                <h3 class="monitoringCount">Monitoring</h3>
-            </div>
-        </div>
-        <hr>
-        <div class="row">
-            <div class="medium-12">
-                <google-chart
-                  type='area'
-                  options='{"title": "Distribution of days in 2001Q1"}'
-                  cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
-                  rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
-                </google-chart>
-            </div>
-        </div>
+    <div ng-view id="content">
+        
     </div>
     
     <script src="bower_components/jquery/dist/jquery.js"></script>
