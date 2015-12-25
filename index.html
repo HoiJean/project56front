@@ -7,6 +7,15 @@
     <title>CityGis - Dashboard</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/foundation-icons.css">
+    <link rel="stylesheet" href="bower_components/google-chart/google-chart.css">
+    <link rel="import" href="bower_components/google-chart/google-chart.html">
+
+    <style>
+        google-chart {
+          height: 300px;
+          width: 75em;
+        }
+    </style>
 </head>
 <body ng-app="citygis">
     <header id="header">
@@ -58,11 +67,16 @@
         <hr>
         <div class="row">
             <div class="medium-12">
-                <img src="http://placehold.it/1200x400" alt="">
+                <google-chart
+                  type='area'
+                  options='{"title": "Distribution of days in 2001Q1"}'
+                  cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
+                  rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
+                </google-chart>
             </div>
         </div>
     </div>
-
+    
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/what-input/what-input.js"></script>
     <script src="bower_components/foundation-sites/dist/foundation.js"></script>

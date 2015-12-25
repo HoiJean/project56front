@@ -10,7 +10,9 @@ var sassPaths = [
 var scriptsPaths = [
     'bower_components/webcomponentsjs/webcomponents-lite.js',
     'bower_components/angular/angular.js',
+    'bower_components/angular-route/angular-route.js',
     'application/controllers/*.js',
+    'application/services/*.js',
     'application/main.js',
 ];
 
