@@ -32457,6 +32457,9 @@ app.config(['$routeProvider', function($routeProvider) {
 		})
 		.otherwise({ redirectTo: '/'});
 }]);
+app.controller('RapportController', function($scope) {
+	$scope.message = "Mijn test";
+});
 app.controller('TestController', function($scope) {
 	$scope.message = "Mijn test";
 }); 
