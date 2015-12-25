@@ -7,17 +7,8 @@
     <title>CityGis - Dashboard</title>
     <link rel="stylesheet" href="css/app.css">
     <link rel="stylesheet" href="css/foundation-icons.css">
-    <link rel="stylesheet" href="bower_components/google-chart/google-chart.css">
-    <link rel="import" href="bower_components/google-chart/google-chart.html">
-
-    <style>
-        google-chart {
-          height: 300px;
-          width: 75em;
-        }
-    </style>
 </head>
-<body>
+<body ng-app="citygis">
     <header id="header">
         <div class="title-bar" data-responsive-toggle="gis-menu" data-hide-for="medium">
             <button class="menu-icon" type="button" data-toggle></button>
@@ -52,10 +43,10 @@
         </div>
     </div>
 
-    <div id="content">
+    <div id="content" ng-controller="MainCtrl">
         <div id="widgets" class="row">
             <div class="widget medium-4 columns">
-                <h3 class="connectionsCount">Connecties</h3>
+                <h3 class="connectionsCount">{{ message }}</h3>
             </div>
             <div class="widget medium-4 columns">
                 <h3 class="eventCount">Events</h3>
@@ -67,33 +58,10 @@
         <hr>
         <div class="row">
             <div class="medium-12">
-                <google-chart
-                  type='area'
-                  options='{"title": "Distribution of days in 2001Q1"}'
-                  cols='[{"label":"Month", "type":"string"}, {"label":"Days", "type":"number"}]'
-                  rows='[["Jan", 31],["Feb", 28],["Mar", 31]]'>
-                </google-chart>
+                <img src="http://placehold.it/1200x400" alt="">
             </div>
         </div>
     </div>
-    
-    <script type="text/template" id="connection_template">
-        <h4>Helooo template</h4>
-    </script>
-
-    <script type="text/template" id="widget_connection_template">
-        <%= connectionsCount %>
-        <small>Connecties</small>
-    </script>
-    <script type="text/template" id="widget_event_template">
-        <%= eventsCount %>
-        <small>Events</small>
-    </script>
-
-    <script type="text/template" id="widget_monitoring_template">
-        <%= monitoringsCount %>
-        <small>Monitoring</small>
-    </script>
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/what-input/what-input.js"></script>
