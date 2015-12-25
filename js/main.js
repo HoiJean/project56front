@@ -32453,10 +32453,23 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 		var output = [];
 
 		for(var i = 0; i < 10; i++) {
-			$scope.data.push(["Year", i*10]);
+			var arr = $scope.connections[i];
+			var datetime = arr.Datetime;
+			var value = arr.Value;
+			output.push([datetime,value]);
+			var d = new Date(datetime);
+			console.log(d);
+
+			// $scope.data.push(["Year", i*10]);
 		}
 
-		console.log(output);
+		console.log(output.splice(0, 3));
+
+		$scope.data = output;
+
+		// console.log(output);
+
+		// console.log($scope.connections.slice(0, 3));
 
 	});
 
