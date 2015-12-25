@@ -32446,6 +32446,18 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 	connectionService.getConnections().then(function(response) {
 		// Connections
 		$scope.connectionsCount = response.data.length;
+		$scope.data = [];
+		$scope.connections = response.data;
+
+		var chunk = 7;
+		var output = [];
+
+		for(var i = 0; i < 10; i++) {
+			$scope.data.push(["Year", i*10]);
+		}
+
+		console.log(output);
+
 	});
 
 	eventService.getEvents().then(function(response) {
