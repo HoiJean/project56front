@@ -32476,7 +32476,7 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'MainCtrl',
 			templateUrl: './templates/main.html'
 		})
-		.when('/', {
+		.when('/rapport', {
 			controller: 'RapportController',
 			templateUrl: './templates/rapport.html'
 		})
