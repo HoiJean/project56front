@@ -1,4 +1,4 @@
-var app = angular.module('citygis', ['ngRoute']);
+var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
 app.controller('MainCtrl', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
