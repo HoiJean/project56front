@@ -32443,35 +32443,91 @@ var app = angular.module('citygis', ['ngRoute']);
 app.controller('MainCtrl', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
+	$scope.getConnectionsByDate = function(date) {
+		connectionService.getConnectionsByDate(date).then(function(response) {
+			var count = response.data.length;
+			var allConnections = response.data;
+			var output = [];
+			
+
+			for(var i = 0; i < count; i++)
+			{
+				var arr = allConnections[i];
+				var datetime = arr.Datetime;
+				var value = arr.Value;
+				var date = new Date(datetime);
+
+				output.push([date.toLocaleTimeString(), value]);
+
+			}
+
+			$scope.data = output;
+
+		});
+	}
+
+	$scope.changeDate = function(date) {
+		if( date != "" ) {
+			var splited = date.split("-");
+			var outDate = splited[2] + "-" + splited[1] + "-" + splited[0];
+
+			console.log("####### " +outDate); 
+
+			$scope.selectedDate = outDate;
+			
+			$scope.getConnectionsByDate($scope.selectedDate);
+		}
+	};
+
 	connectionService.getConnections().then(function(response) {
 		// Connections
 		$scope.connectionsCount = response.data.length;
-		$scope.data = [];
+		// $scope.data = [];
+		$scope.selectData = [];
+
 		$scope.connections = response.data;
 
-		var chunk = 7;
-		var output = [];
-
-		for(var i = 0; i < 10; i++) {
+		for(var i = 0; i < $scope.connectionsCount; i++) {
 			var arr = $scope.connections[i];
 			var datetime = arr.Datetime;
 			var value = arr.Value;
-			output.push([datetime,value]);
-			var d = new Date(datetime);
-			console.log(d);
+			var date = new Date(datetime);
 
-			// $scope.data.push(["Year", i*10]);
+			$scope.selectData.push(date.toLocaleDateString());
+
 		}
 
-		console.log(output.splice(0, 3));
+		var selOutput = [];
 
-		$scope.data = output;
+		for(var i = 0; i < $scope.connectionsCount; i++)
+		{
+			var conDate = $scope.selectData[i];
 
-		// console.log(output);
+			if( selOutput.indexOf(conDate) == -1 ) {
+				selOutput.push(conDate);
+			}
+		}
 
-		// console.log($scope.connections.slice(0, 3));
+		
+		var d = new Date(selOutput[0]);
+
+		$scope.selectConns = selOutput;
+		// if( $scope.selectedDate == "" ) {
+		// 	$scope.selectedDate = yyyymmdd(d.toLocaleDateString());
+		// }
+
+
+		// $scope.data = output;
+		
+		// Connections by date
+		
+		// Init Chart
+		$scope.date = $scope.selectConns[0];
+		$scope.changeDate($scope.selectConns[0]);
 
 	});
+
+	
 
 	eventService.getEvents().then(function(response) {
 		$scope.eventsCount = response.data.length;
@@ -32519,6 +32575,10 @@ app.service('connectionService', function($http, $q) {
 
 	this.getConnections = function() {
 		return $http.get(url);
+	}
+
+	this.getConnectionsByDate = function(date) {
+		return $http.get(url+"?datetime="+date);
 	}
 
 });  

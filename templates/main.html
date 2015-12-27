@@ -12,6 +12,12 @@
 <hr>
 <div class="row">
     <div class="medium-12">
+        <select
+            ng-model="date"
+            ng-options="date as date for date in selectConns"
+            ng-change="changeDate(date)">
+            
+        </select>
         <google-chart
           type='area'
           options='{"title": "Value/dag"}'

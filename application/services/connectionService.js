@@ -7,4 +7,8 @@ app.service('connectionService', function($http, $q) {
 		return $http.get(url);
 	}
 
+	this.getConnectionsByDate = function(date) {
+		return $http.get(url+"?datetime="+date);
+	}
+
 });  
