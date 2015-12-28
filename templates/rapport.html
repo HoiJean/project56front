@@ -17,7 +17,6 @@
 
                 <table width="100%">
                   <thead>
-                  {{ connectionTable }}
                     <tr>
                       <th>Datum</th>
                       <th>Verbonden</th>
@@ -26,14 +25,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>11-11-2016</td>
-                      <td>1</td>
-                      <td>11111</td>
-                      <td>8378632</td>
+                    <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                      <td>{{ connection.Datetime }}</td>
+                      <td>{{ connection.Value }}</td>
+                      <td>{{ connection.Port }}</td>
+                      <td>{{ connection.Unit_id }}</td>
                     </tr>
                   </tbody>
                 </table>
+
+                  <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true" >
+                  </dir-pagination-controls>
             </div>
 
             <div class="medium-12">
