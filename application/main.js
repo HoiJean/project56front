@@ -1,6 +1,5 @@
 var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination']);
 
-
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
 		.when('/', {
