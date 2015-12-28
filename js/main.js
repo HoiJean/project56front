@@ -32440,7 +32440,20 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 
 var app = angular.module('citygis', ['ngRoute']);
 
-app.controller('MainCtrl', function($scope, connectionService, eventService, monitoringService) {
+
+app.config(['$routeProvider', function($routeProvider) {
+	$routeProvider
+		.when('/', {
+			controller: 'DashboardController',
+			templateUrl: './templates/main.html'
+		})
+		.when('/rapport', {
+			controller: 'RapportController',
+			templateUrl: './templates/rapport.html'
+		})
+		.otherwise({ redirectTo: '/'});
+}]);
+app.controller('DashboardController', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
 	$scope.getConnectionsByDate = function(date) {
@@ -32449,7 +32462,6 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 			var allConnections = response.data;
 			var output = [];
 			
-
 			for(var i = 0; i < count; i++)
 			{
 				var arr = allConnections[i];
@@ -32512,16 +32524,7 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 		var d = new Date(selOutput[0]);
 
 		$scope.selectConns = selOutput;
-		// if( $scope.selectedDate == "" ) {
-		// 	$scope.selectedDate = yyyymmdd(d.toLocaleDateString());
-		// }
 
-
-		// $scope.data = output;
-		
-		// Connections by date
-		
-		// Init Chart
 		$scope.date = $scope.selectConns[0];
 		$scope.changeDate($scope.selectConns[0]);
 
@@ -32539,18 +32542,6 @@ app.controller('MainCtrl', function($scope, connectionService, eventService, mon
 
 });
 
-app.config(['$routeProvider', function($routeProvider) {
-	$routeProvider
-		.when('/', {
-			controller: 'MainCtrl',
-			templateUrl: './templates/main.html'
-		})
-		.when('/rapport', {
-			controller: 'RapportController',
-			templateUrl: './templates/rapport.html'
-		})
-		.otherwise({ redirectTo: '/'});
-}]);
 app.controller('EventController', function($scope, eventService) {
 
 	
