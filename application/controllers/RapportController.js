@@ -17,7 +17,6 @@ app.controller('RapportController', function($scope, connectionService) {
 		// 	$scope.connectionTable += "</tr>";
 		// });
 
-		console.log(response.data);
 	});
 
 	// connectionService.getEvents().then(function(response) {
