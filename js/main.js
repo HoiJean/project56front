@@ -60898,17 +60898,15 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'RapportController',
 			templateUrl: './templates/rapport.html'
 		})
-<<<<<<< HEAD
 		.when('/unit/:id', {
 			controller: 'UnitController',
 			templateUrl: './templates/unit/details.html'
-=======
+		})
 		.when('/maps', {
 			controller: 'MapsController',
 			templateUrl: './templates/maps.html'
->>>>>>> develop
 		})
-		.otherwise({ redirectTo: '/'});
+		.otherwise({ redirectTo: '/'}) 
 }]);
 
 
