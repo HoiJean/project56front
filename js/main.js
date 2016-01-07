@@ -33019,6 +33019,10 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'RapportController',
 			templateUrl: './templates/rapport.html'
 		})
+		.when('/unit/:id', {
+			controller: 'UnitController',
+			templateUrl: './templates/unit/details.html'
+		})
 		.otherwise({ redirectTo: '/'});
 }]);
 app.controller('DashboardController', function($scope, connectionService, eventService, monitoringService) {
@@ -33159,6 +33163,10 @@ app.controller('RapportController', function($scope, connectionService) {
 app.controller('TestController', function($scope) {
 	$scope.message = "Mijn test";
 }); 
+app.controller('UnitController', function($scope, eventService) {
+
+	
+});
 app.service('connectionService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/connections";
 
