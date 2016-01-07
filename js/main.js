@@ -33121,21 +33121,9 @@ app.controller('EventController', function($scope, eventService) {
 app.controller('RapportController', function($scope, connectionService) {
 
 	connectionService.getConnections().then(function(response) {
+
 		$scope.connections 		= response.data;
-		// $scope.connectionTable	= "";
-		// $scope.connectionEvents	= "";
 
-		// angular.forEach($scope.connections, function(value) {
-			
-		// 	$scope.connectionTable += "<tr>";
-
-		// 	$scope.connectionTable += "<td>" + value.Datetime + "</td>";
-		// 	$scope.connectionTable += "<td>" + value.Value + "</td>";
-		// 	$scope.connectionTable += "<td>" + value.Port + "</td>";
-		// 	$scope.connectionTable += "<td>" + value.Unit_id + "</td>";
-
-		// 	$scope.connectionTable += "</tr>";
-		// });
 
 		console.log(response.data);
 	});
