@@ -5,7 +5,6 @@ app.controller('RapportController', function($scope, connectionService) {
 		$scope.connections 		= response.data;
 
 
-		console.log(response.data);
 	});
 
 	// connectionService.getEvents().then(function(response) {

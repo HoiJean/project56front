@@ -60877,7 +60877,16 @@ angular.module('uiGmapgoogle-maps.extensions')
   };
 }]);
 }( window,angular));
-var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination']);
+var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination', 'uiGmapgoogle-maps']);
+
+app.config(['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
+	GoogleMapApiProviders.configure({
+		//    key: 'your api key',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization',
+        china: true
+	});
+}]);
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -60889,12 +60898,21 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'RapportController',
 			templateUrl: './templates/rapport.html'
 		})
+<<<<<<< HEAD
 		.when('/unit/:id', {
 			controller: 'UnitController',
 			templateUrl: './templates/unit/details.html'
+=======
+		.when('/maps', {
+			controller: 'MapsController',
+			templateUrl: './templates/maps.html'
+>>>>>>> develop
 		})
 		.otherwise({ redirectTo: '/'});
 }]);
+
+
+
 app.controller('DashboardController', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
@@ -60989,6 +61007,37 @@ app.controller('EventController', function($scope, eventService) {
 
 	
 });
+app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogger) {
+	// Do stuff with your $scope.
+	// Note: Some of the directives require at least something to be defined originally!
+	// e.g. $scope.markers = []
+
+	// uiGmapGoogleMapApi is a promise.
+	// The "then" callback function provides the google.maps object.
+
+	$scope.message = "Hello Maps";
+
+	// $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+
+	// console.log($scope.map);
+
+	uiGmapGoogleMapApi.then(function(maps) {
+		// console.log("Hello");
+		// uiGmapLogger.currentLevel = uiGmapLogger.LEVELS.debug;
+
+		myMarkers = [
+		       {id: 1, "latitude": 50.948968, "longitude": 6.944781},
+		       {id: 2, "latitude": 50.94129, "longitude": 6.95817},
+		       {id: 3, "latitude": 50.9175, "longitude": 6.943611}
+		     ];
+
+		$scope.marker = {id: 1, "latitude": 50.948968, "longitude": 6.944781};
+
+		$scope.map = { center: { latitude: 50.948968, longitude: 6.944781 }, zoom: 8 };
+
+		
+	});
+});
 app.controller('RapportController', function($scope, connectionService) {
 
 	connectionService.getConnections().then(function(response) {
@@ -60996,7 +61045,6 @@ app.controller('RapportController', function($scope, connectionService) {
 		$scope.connections 		= response.data;
 
 
-		console.log(response.data);
 	});
 
 	// connectionService.getEvents().then(function(response) {
@@ -61054,5 +61102,17 @@ app.service('monitoringService', function($http, $q) {
 	this.getMonitoring = function() {
 		return $http.get(url);
 	}
+
+});  
+app.service('positionService', function($http, $q) {
+	var url = "http://api.webtronix.nl/api/positions";
+
+	this.getPositions = function() {
+		return $http.get(url);
+	}
+
+	// this.getPositionsByDate = function(date) {
+	// 	return $http.get(url+"?datetime="+date);
+	// }
 
 });  

@@ -1,4 +1,13 @@
-var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination']);
+var app = angular.module('citygis', ['ngRoute', 'angularUtils.directives.dirPagination', 'uiGmapgoogle-maps']);
+
+app.config(['uiGmapGoogleMapApiProvider', function(GoogleMapApiProviders) {
+	GoogleMapApiProviders.configure({
+		//    key: 'your api key',
+        v: '3.20', //defaults to latest 3.X anyhow
+        libraries: 'weather,geometry,visualization',
+        china: true
+	});
+}]);
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider
@@ -10,9 +19,17 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'RapportController',
 			templateUrl: './templates/rapport.html'
 		})
+<<<<<<< HEAD
 		.when('/unit/:id', {
 			controller: 'UnitController',
 			templateUrl: './templates/unit/details.html'
+=======
+		.when('/maps', {
+			controller: 'MapsController',
+			templateUrl: './templates/maps.html'
+>>>>>>> develop
 		})
 		.otherwise({ redirectTo: '/'});
 }]);
+
+
