@@ -29,8 +29,9 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 			var outDate = splited[2] + "-" + splited[1] + "-" + splited[0];
 
 			console.log("####### " +outDate); 
+			console.log("date " +date); 
 
-			$scope.selectedDate = outDate;
+			$scope.selectedDate = date;
 			
 			$scope.getConnectionsByDate($scope.selectedDate);
 		}
