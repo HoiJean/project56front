@@ -55,19 +55,25 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>11-11-2016</td>
-                      <td>1</td>
-                      <td>11111</td>
-                      <td>8378632</td>
+                    <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                      <td>{{ event.Datetime }}</td>
+                      <td>{{ event.Value }}</td>
+                      <td>{{ event.Port }}</td>
+                      <td><a href="/#/unit/{{ event.Unit_id }}">{{ event.Unit_id }}</a></td>
                     </tr>
                   </tbody>
                 </table>
+
+                  <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true" >
+                  </dir-pagination-controls>
             </div>
 
             <div class="medium-12">
 
-                <h2>Connecties</h2>
+                <h2>Monitoring</h2>
 
                 <table width="100%">
                   <thead>
@@ -81,16 +87,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>11-11-2016</td>
-                      <td>11-11-2016</td>
-                      <td>1</td>
-                      <td>10</td>
-                      <td>20</td>
-                      <td>15</td>
+                    <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                      <td>{{ monitoring.Datetime }}</td>
+                      <td>{{ monitoring.Datetime }}</td>
+                      <td>{{ monitoring.Type }}</td>
+                      <td>{{ monitoring.Min }}</td>
+                      <td>{{ monitoring.Max }}</td>
+                      <td>{{ monitoring.Sum }}</td>
                     </tr>
                   </tbody>
                 </table>
+
+                  <dir-pagination-controls
+                    max-size="5"
+                    direction-links="true"
+                    boundary-links="true" >
+                  </dir-pagination-controls>
             </div>
 
 

@@ -6,13 +6,30 @@ app.controller('RapportController', function($scope, connectionService) {
 
 
 	});
+});
 
-	// connectionService.getEvents().then(function(response) {
+app.controller('RapportController', function($scope, eventService) {
+
+	 eventService.getEvents().then(function(response) {
+
+		 $scope.events				= response.data;
+	 });
+});
+
+ app.controller('RapportController', function($scope, monitoringService) {
+
+	 monitoringService.getMonitoring().then(function(response) {
+
+		 $scope.monitoring		= response.data;
+
+	 });
+ });
+	//  connectionService.getEvents().then(function(response) {
 	// 	$scope.events 		= response.data;
 	// 	$scope.eventsTable	= "";
 
 	// 	angular.forEach($scope.events, function(value) {
-			
+
 	// 		$scope.eventsTable += "<tr>";
 
 	// 		// $scope.eventsTable += "<td>" + value.Datetime + "</td>";
@@ -25,5 +42,3 @@ app.controller('RapportController', function($scope, connectionService) {
 
 	// 	// console.log(response.data);
 	// });
-
-});
