@@ -5,4 +5,7 @@ app.service('monitoringService', function($http, $q) {
 		return $http.get(url);
 	}
 
-});  
+	this.getMonitoringByDate = function(date) {
+		return $http.get(url+"?datetime="+date);
+	}
+});

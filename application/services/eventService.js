@@ -5,4 +5,7 @@ app.service('eventService', function($http, $q) {
 		return $http.get(url);
 	}
 
-});  
+	this.getEventsByDate = function(date) {
+		return $http.get(url+"?datetime="+date);
+	}
+});

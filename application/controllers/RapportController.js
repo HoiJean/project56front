@@ -14,6 +14,7 @@ app.controller('RapportController', function($scope, eventService) {
 
 		 $scope.events				= response.data;
 	 });
+	 console.log(response.data);
 });
 
  app.controller('RapportController', function($scope, monitoringService) {
@@ -23,6 +24,7 @@ app.controller('RapportController', function($scope, eventService) {
 		 $scope.monitoring		= response.data;
 
 	 });
+	 console.log(response.data);
  });
 	//  connectionService.getEvents().then(function(response) {
 	// 	$scope.events 		= response.data;

@@ -58,8 +58,8 @@
                     <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
                       <td>{{ event.Datetime }}</td>
                       <td>{{ event.Value }}</td>
-                      <td>{{ event.Port }}</td>
-                      <td><a href="/#/unit/{{ event.Unit_id }}">{{ event.Unit_id }}</a></td>
+                      <td>{{ event.port }}</td>
+                      <td><a href="/#/unit/{{ event.Unit_id }}">{{ event.unit_id }}</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -88,8 +88,8 @@
                   </thead>
                   <tbody>
                     <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-                      <td>{{ monitoring.Datetime }}</td>
-                      <td>{{ monitoring.Datetime }}</td>
+                      <td>{{ monitoring.Begin_time }}</td>
+                      <td>{{ monitoring.End_time }}</td>
                       <td>{{ monitoring.Type }}</td>
                       <td>{{ monitoring.Min }}</td>
                       <td>{{ monitoring.Max }}</td>
