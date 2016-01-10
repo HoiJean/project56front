@@ -8,11 +8,64 @@
     </tr>
   </thead>
   <tbody>
-    <tr dir-paginate="connection in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+    <tr dir-paginate="connection in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
       <td>{{ connection.Unit_id }}</td>
+      <td>{{ connection.Datetime }}</td>
       <td>{{ connection.Value }}</td>
       <td>{{ connection.Port }}</td>
       <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Begindatum</th>
+      <th>Einddatum</th>
+      <th>Type</th>
+      <th>Min</th>
+      <th>Max</th>
+      <th>Sum</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr dir-paginate="connection in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+      <td>{{ connection.Begin_time }}</td>
+      <td>{{ connection.End_time }}</td>
+      <td>{{ connection.Type }}</td>
+      <td>{{ connection.Min }}</td>
+      <td>{{ connection.Max }}</td>
+      <td>{{ connection.Sum }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>rdx</th>
+      <th>rdy</th>
+      <th>speed</th>
+      <th>course</th>
+      <th>numsatl</th>
+      <th>hdop</th>
+      <th>quality</th>
+      <th>unit_id</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+      <td>{{ position.datetime }}</td>
+      <td>{{ position.rdx }}</td>
+      <td>{{ position.rdy }}</td>
+      <td>{{ position.speed }}</td>
+      <td>{{ position.course }}</td>
+      <td>{{ position.numsatel }}</td>
+      <td>{{ position.hdop }}</td>
+      <td>{{ position.quality }}</td>
+      <td><a href="/#/unit/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
     </tr>
   </tbody>
 </table>

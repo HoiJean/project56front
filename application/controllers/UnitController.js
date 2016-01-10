@@ -1,13 +1,27 @@
-app.controller('UnitController', function($scope, positionService) {
+app.controller('UnitController', function($scope, eventService, monitoringService, positionService) {
 
 	console.log("aa");
-	positionService.getPositions().then(function(response) {
+	eventService.getEvents().then(function(response) {
 
-		console.log("ik geloof dat het werkt, maar duurt te lang om te laden omdat het te veel data is -_-");
+		console.log("ik geloof dat het werkt");
 		// let wel op je namen -_-
 
-		$scope.positions 		= response.data;
+		$scope.events 				= response.data;
 
 		console.log("oki");
 	});
+
+	monitoringService.getMonitoring().then(function(response) {
+
+		console.log("werkt");
+	   $scope.monitoring		= response.data;
+		console.log("okay");
+	});
+
+	positionService.getPositions().then(function(response) {
+		console.log("werkt ook");
+		$scope.positions			= response.data;
+		console.log("ok dan");
+	});
+
 });

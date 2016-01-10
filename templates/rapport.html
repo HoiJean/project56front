@@ -59,7 +59,7 @@
                       <td>{{ event.Datetime }}</td>
                       <td>{{ event.Value }}</td>
                       <td>{{ event.port }}</td>
-                      <td><a href="/#/unit/{{ event.Unit_id }}">{{ event.unit_id }}</a></td>
+                      <td><a href="/#/unit/{{ event.unit_id }}">{{ event.unit_id }}</a></td>
                     </tr>
                   </tbody>
                 </table>
@@ -84,6 +84,7 @@
                       <th>Min</th>
                       <th>Max</th>
                       <th>Sum</th>
+                      <th>Auto ID</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -94,6 +95,7 @@
                       <td>{{ monitoring.Min }}</td>
                       <td>{{ monitoring.Max }}</td>
                       <td>{{ monitoring.Sum }}</td>
+                      <td><a href="/#/unit/{{ monitoring.Unit_id }}">{{ monitoring.Unit_id }}</a></td>
                     </tr>
                   </tbody>
                 </table>
