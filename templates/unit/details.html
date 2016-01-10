@@ -1,1 +1,18 @@
-Dit is een test
+<table width="100%">
+  <thead>
+    <tr>
+      <th>Datum</th>
+      <th>Verbonden</th>
+      <th>Port</th>
+      <th>Auto ID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr dir-paginate="connection in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+      <td>{{ connection.Unit_id }}</td>
+      <td>{{ connection.Value }}</td>
+      <td>{{ connection.Port }}</td>
+      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
+    </tr>
+  </tbody>
+</table>
