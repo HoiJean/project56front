@@ -9,9 +9,9 @@ app.service('monitoringService', function($http, $q) {
 
 	this.getMonitoringCount = function() {
 		return $http.get(url+"?count");
-	} 
+	}
 
-	// this.getMonitoringByDate = function(date) {
-	// 	return $http.get(url+"?begintime="+date);
-	// }
+	this.getMonitoringByUnit = function(unitId) {
+		return $http.get(url+"?Fromunit="+unitId);
+	}
 });
