@@ -1,10 +1,9 @@
-app.controller('UnitController', function($scope, eventService, monitoringService, positionService) {
+app.controller('UnitController', function($scope, eventService, monitoringService, positionService, $routeParams) {
 
 	console.log("aa");
 	eventService.getEvents().then(function(response) {
 
 		console.log("ik geloof dat het werkt");
-		// let wel op je namen -_-
 
 		$scope.events 				= response.data;
 
@@ -23,5 +22,7 @@ app.controller('UnitController', function($scope, eventService, monitoringServic
 		$scope.positions			= response.data;
 		console.log("ok dan");
 	});
+
+	console.log($routeParams.id);
 
 });
