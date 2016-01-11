@@ -15,6 +15,7 @@ var scriptsPaths = [
     'bower_components/angularUtils-pagination/dirPagination.js',
     'bower_components/angular-simple-logger/dist/angular-simple-logger.js',
     'bower_components/angular-google-maps/dist/angular-google-maps.js',
+    'application/helpers.js',
     'application/main.js',
     'application/controllers/*.js',
     'application/services/*.js',
