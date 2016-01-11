@@ -1,4 +1,4 @@
-app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogger, positionService) {
+app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogger, positionService, $routeParams) {
 	// Do stuff with your $scope.
 	// Note: Some of the directives require at least something to be defined originally!
 	// e.g. $scope.markers = []
@@ -16,7 +16,7 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 		// console.log("Hello");
 		// uiGmapLogger.currentLevel = uiGmapLogger.LEVELS.debug;
 		
-		var unitId = 357566000058064;
+		var unitId = $routeParams.id || 357566000058064;
 
 		// var positionsByUnit = [
 		// 	{

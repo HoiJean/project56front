@@ -21,6 +21,9 @@
 <hr>
 <div class="row">
     <div class="medium-12">
+        <h5>Connecties</h5>
+        <input placeholder="Hoeveel wil je weergeven?" type="text" ng-model="aantalM" ng-change="changeCount()">
+ 
         <select
             ng-model="date"
             ng-options="date as date for date in selectConns"
@@ -30,10 +33,9 @@
         <google-chart
           type='column'
           options='{"title": "Value/dag"}'
-          cols='[{"label":"Month", "type":"string"}, {"label":"Value", "type":"number"}]'
-          rows='{{ data | limitTo: 10 }}'>
+          cols='[{"label":"Month", "type":"string"}, {"label":"Status", "type":"number"}]'
+          rows='{{ data | limitTo: aantal }}'>
         </google-chart>
-        <p>Here's a column chart:</p>
 
     </div>
 </div>

@@ -27,6 +27,10 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'MapsController',
 			templateUrl: './templates/maps.html'
 		})
+		.when('/maps/:id', {
+			controller: 'MapsController',
+			templateUrl: './templates/maps.html'
+		})
 		.otherwise({ redirectTo: '/'}) 
 }]);
 

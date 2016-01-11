@@ -26,13 +26,25 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 		});
 	}
 
+	if( $scope.aantalM > 0 ) {
+		$scope.aantal = $scope.aantalM;
+	}
+	else {
+		$scope.aantal = 10;
+	}
+
+	$scope.changeCount = function() {
+		if( $scope.aantalM > 0) 
+			$scope.aantal = $scope.aantalM;
+	};
+
 	$scope.changeDate = function(date) {
 		if( date != "" ) {
 			var splited = date.split("-");
 			var outDate = splited[2] + "-" + splited[1] + "-" + splited[0];
 
-			console.log("####### " +outDate); 
-			console.log("date " +date); 
+			// console.log("####### " +outDate); 
+			// console.log("date " +date); 
 
 			$scope.selectedDate = date;
 			
