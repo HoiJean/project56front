@@ -20,6 +20,9 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 			$scope.data = output;
 
+			console.log($scope.data);
+			console.log(allConnections);
+
 		});
 	}
 
@@ -37,9 +40,11 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 		}
 	};
 
+
+
 	connectionService.getConnections().then(function(response) {
 		// Connections
-		$scope.connectionsCount = response.data.length;
+		// $scope.connectionsCount = response.data.length;
 		// $scope.data = [];
 		$scope.selectData = [];
 
@@ -76,14 +81,17 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 	});
 
-	
-
-	eventService.getEvents().then(function(response) {
-		$scope.eventsCount = response.data.length;
+	connectionService.getConnectionsCount().then(function(response) {
+		console.log(response.data);
+		$scope.connectionsCount = response.data;
 	});
 
-	monitoringService.getMonitoring().then(function(response) {
-		$scope.monitoringsCount = response.data.length;
+	eventService.getEventsCount().then(function(response) {
+		$scope.eventsCount = response.data;
+	});
+
+	monitoringService.getMonitoringCount().then(function(response) {
+		$scope.monitoringsCount = response.data;
 	});
 
 });

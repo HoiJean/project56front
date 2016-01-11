@@ -7,6 +7,10 @@ app.service('monitoringService', function($http, $q) {
 		return $http.get(url);
 	}
 
+	this.getMonitoringCount = function() {
+		return $http.get(url+"?count");
+	} 
+
 	// this.getMonitoringByDate = function(date) {
 	// 	return $http.get(url+"?begintime="+date);
 	// }

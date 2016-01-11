@@ -1,12 +1,21 @@
 <div id="widgets" class="row">
     <div class="widget medium-4 columns">
-        <h3 class="connectionsCount">{{ connectionsCount }}</h3>
+        <h3 class="connectionsCount">
+            {{ connectionsCount }}
+            <span>Connections</span>
+        </h3>
     </div>
     <div class="widget medium-4 columns">
-        <h3 class="eventCount">{{ eventsCount }}</h3>
+        <h3 class="eventCount">
+            {{ eventsCount }}
+            <span>Events</span>
+        </h3>
     </div>
     <div class="widget medium-4 columns">
-        <h3 class="monitoringCount">{{ monitoringsCount }}</h3> 
+        <h3 class="monitoringCount">
+            {{ monitoringsCount }}
+            <span>Monitoring</span>
+        </h3> 
     </div>
 </div>
 <hr>
@@ -19,10 +28,12 @@
             
         </select>
         <google-chart
-          type='area'
+          type='column'
           options='{"title": "Value/dag"}'
           cols='[{"label":"Month", "type":"string"}, {"label":"Value", "type":"number"}]'
-          rows='{{ data }}'>
+          rows='{{ data | limitTo: 10 }}'>
         </google-chart>
+        <p>Here's a column chart:</p>
+
     </div>
 </div>

@@ -11,4 +11,7 @@ app.service('connectionService', function($http, $q) {
 		return $http.get(url+"?datetime="+date);
 	}
 
+	this.getConnectionsCount = function() {
+		return $http.get(url+"?count");
+	}              
 });

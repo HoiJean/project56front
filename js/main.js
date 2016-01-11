@@ -60933,6 +60933,9 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 			$scope.data = output;
 
+			console.log($scope.data);
+			console.log(allConnections);
+
 		});
 	}
 
@@ -60950,9 +60953,11 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 		}
 	};
 
+
+
 	connectionService.getConnections().then(function(response) {
 		// Connections
-		$scope.connectionsCount = response.data.length;
+		// $scope.connectionsCount = response.data.length;
 		// $scope.data = [];
 		$scope.selectData = [];
 
@@ -60989,14 +60994,17 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 	});
 
-	
-
-	eventService.getEvents().then(function(response) {
-		$scope.eventsCount = response.data.length;
+	connectionService.getConnectionsCount().then(function(response) {
+		console.log(response.data);
+		$scope.connectionsCount = response.data;
 	});
 
-	monitoringService.getMonitoring().then(function(response) {
-		$scope.monitoringsCount = response.data.length;
+	eventService.getEventsCount().then(function(response) {
+		$scope.eventsCount = response.data;
+	});
+
+	monitoringService.getMonitoringCount().then(function(response) {
+		$scope.monitoringsCount = response.data;
 	});
 
 });
@@ -61036,42 +61044,75 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 		
 	});
 });
-app.controller('RapportController', function($scope, connectionService) {
+app.controller('RapportController', function($scope, connectionService, eventService, monitoringService) {
 
 	connectionService.getConnections().then(function(response) {
 
 		$scope.connections 		= response.data;
-
-
 	});
 
-	// connectionService.getEvents().then(function(response) {
+	 eventService.getEvents().then(function(response) {
+
+		 $scope.events				= response.data;
+	 });
+
+	 monitoringService.getMonitoring().then(function(response) {
+
+		 $scope.monitoring		= response.data;
+
+	 });
+ });
+
+	//  connectionService.getEvents().then(function(response) {
 	// 	$scope.events 		= response.data;
 	// 	$scope.eventsTable	= "";
-
+	//
 	// 	angular.forEach($scope.events, function(value) {
-			
+	//
 	// 		$scope.eventsTable += "<tr>";
-
-	// 		// $scope.eventsTable += "<td>" + value.Datetime + "</td>";
-	// 		// $scope.eventsTable += "<td>" + value.Value + "</td>";
-	// 		// $scope.eventsTable += "<td>" + value.Port + "</td>";
-	// 		// $scope.eventsTable += "<td>" + value.Unit_id + "</td>";
-
+	//
+	// 		$scope.eventsTable += "<td>" + value.Datetime + "</td>";
+	// 		$scope.eventsTable += "<td>" + value.Value + "</td>";
+	// 		$scope.eventsTable += "<td>" + value.Port + "</td>";
+	// 		$scope.eventsTable += "<td>" + value.Unit_id + "</td>";
+	//
 	// 		$scope.eventsTable += "</tr>";
 	// 	});
-
-	// 	// console.log(response.data);
+	//
+	// 	console.log(response.data);
 	// });
 
-});
 app.controller('TestController', function($scope) {
 	$scope.message = "Mijn test";
 }); 
-app.controller('UnitController', function($scope, eventService) {
+app.controller('UnitController', function($scope, eventService, monitoringService, positionService) {
 
-	
+	console.log("aa");
+	eventService.getEvents().then(function(response) {
+
+		console.log("ik geloof dat het werkt");
+		// let wel op je namen -_-
+
+		$scope.events 				= response.data;
+
+		console.log("oki");
+	});
+
+	monitoringService.getMonitoring().then(function(response) {
+
+		console.log("werkt");
+	   $scope.monitoring		= response.data;
+		console.log("okay");
+	});
+
+	positionService.getPositions().then(function(response) {
+		console.log("werkt ook");
+		$scope.positions			= response.data;
+		console.log("ok dan");
+	});
+
 });
+
 app.service('connectionService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/connections";
 
@@ -61085,26 +61126,50 @@ app.service('connectionService', function($http, $q) {
 		return $http.get(url+"?datetime="+date);
 	}
 
-});  
+	this.getConnectionsCount = function() {
+		return $http.get(url+"?count");
+	}              
+});
+
 app.service('eventService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/events";
 
+	var allEvents = {};
+	
 	this.getEvents = function() {
 		return $http.get(url);
 	}
 
-});  
+	this.getEventsCount = function() {
+		return $http.get(url+"?count");
+	} 
+
+	// this.getEventsByDate = function(date) {
+	// 	return $http.get(url+"?datetime="+date);
+	// }
+});
+
 app.service('monitoringService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/monitoring";
+
+	var allMonitoring = {};
 
 	this.getMonitoring = function() {
 		return $http.get(url);
 	}
 
-});  
+	this.getMonitoringCount = function() {
+		return $http.get(url+"?count");
+	} 
+
+	// this.getMonitoringByDate = function(date) {
+	// 	return $http.get(url+"?begintime="+date);
+	// }
+});
+
 app.service('positionService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/positions";
-
+	
 	this.getPositions = function() {
 		return $http.get(url);
 	}

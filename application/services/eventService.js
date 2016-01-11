@@ -7,6 +7,10 @@ app.service('eventService', function($http, $q) {
 		return $http.get(url);
 	}
 
+	this.getEventsCount = function() {
+		return $http.get(url+"?count");
+	} 
+
 	// this.getEventsByDate = function(date) {
 	// 	return $http.get(url+"?datetime="+date);
 	// }
