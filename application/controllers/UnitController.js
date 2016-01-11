@@ -1,4 +1,4 @@
-app.controller('UnitController', function($scope, connectionService, eventService, monitoringService, positionService, $routeParams) {
+app.controller('UnitController', function($scope, $http, connectionService, eventService, monitoringService, positionService, $routeParams) {
 
 
 	connectionService.getConnectionsByUnit($routeParams.id).then(function(response) {
@@ -6,7 +6,40 @@ app.controller('UnitController', function($scope, connectionService, eventServic
 		console.log("zou werken");
 		$scope.connections		= response.data;
 		console.log($scope.connections);
-	})
+	});
+
+
+
+
+
+
+	$scope.currentPage = 1;
+
+	$scope.tracks = [];
+	getData();
+
+
+	function getData() {
+		$http.get("https://ws.spotify.com/search/1/track.json?q=kaizers+orchestra&page=" + $scope.currentPage)
+		.then(function(response) {
+			$scope.totalItems = response.data.info.num_results
+			angular.copy(response.data.tracks, $scope.tracks)
+
+			console.log("DIT IS NIEUW???");
+
+
+			console.log(response.data.tracks);
+		});
+	}
+
+	$scope.pageChanged = function() {
+		getData();
+	};
+
+
+
+
+
 
 	eventService.getEventsByUnit($routeParams.id).then(function(response) {
 
