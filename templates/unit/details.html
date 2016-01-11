@@ -20,8 +20,8 @@
 <table width="100%">
   <thead>
     <tr>
-      <th>Begindatum</th>
-      <th>Einddatum</th>
+      <th>Begin datum</th>
+      <th>Eind datum</th>
       <th>Type</th>
       <th>Min</th>
       <th>Max</th>
@@ -58,15 +58,15 @@
   </thead>
   <tbody>
     <tr dir-paginate="connection in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ position.datetime }}</td>
+      <td>{{ connection.datetime }}</td>
       <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.unit_id }}</a></td>
-      <td>{{ position.rdx }}</td>
-      <td>{{ position.rdy }}</td>
-      <td>{{ position.speed }}</td>
-      <td>{{ position.course }}</td>
-      <td>{{ position.numsatel }}</td>
-      <td>{{ position.hdop }}</td>
-      <td>{{ position.quality }}</td>
+      <td>{{ connection.rdx }}</td>
+      <td>{{ connection.rdy }}</td>
+      <td>{{ connection.speed }}</td>
+      <td>{{ connection.course }}</td>
+      <td>{{ connection.numsatel }}</td>
+      <td>{{ connection.hdop }}</td>
+      <td>{{ connection.quality }}</td>
     </tr>
   </tbody>
 </table>
