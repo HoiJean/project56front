@@ -6,7 +6,7 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 	// uiGmapGoogleMapApi is a promise.
 	// The "then" callback function provides the google.maps object.
 
-	$scope.message = "Hello Maps";
+	$scope.message = "Bezig met laden...";
 
 	// $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
@@ -62,7 +62,6 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 
 
 				// pos.title = currentUnit.datetime;
-				console.log(unitDate.toLocaleString());
 
 				pos.title = {date: unitDate.toLocaleString(), speed: currentUnit.speed, quality: currentUnit.quality};
 				pos.options = {labelContent:"Markers id 3",labelAnchor:"26 0",labelClass:"marker-labels"};
@@ -80,11 +79,11 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 			        latitude: positionsMarkers[0].latitude,
 			        longitude: positionsMarkers[0].longitude
 			      },
-			      zoom: 7,
+			      zoom: 14,
 			      bounds: {}
 			    };
 			    $scope.options = {
-			      scrollwheel: false
+			      scrollwheel: true
 			    };
 
 			    var createRandomMarker = function(i, bounds, idKey) {
@@ -122,7 +121,9 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 			        $scope.citygisMarkers = positionsMarkers;
 			        // console.log($scope.randomMarkers);
 			      }
-			    }, true);	
+			    }, true);
+
+			    $scope.message = "Unit: " + unitId;	
 
 		});
 
