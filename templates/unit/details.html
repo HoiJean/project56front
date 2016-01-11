@@ -9,11 +9,10 @@
   </thead>
   <tbody>
     <tr dir-paginate="connection in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ connection.Unit_id }}</td>
       <td>{{ connection.Datetime }}</td>
       <td>{{ connection.Value }}</td>
-      <td>{{ connection.Port }}</td>
-      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
+      <td>{{ connection.port }}</td>
+      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.unit_id }}</a></td>
     </tr>
   </tbody>
 </table>
@@ -27,6 +26,7 @@
       <th>Min</th>
       <th>Max</th>
       <th>Sum</th>
+      <th>Auto ID</th>
     </tr>
   </thead>
   <tbody>
@@ -37,6 +37,7 @@
       <td>{{ connection.Min }}</td>
       <td>{{ connection.Max }}</td>
       <td>{{ connection.Sum }}</td>
+      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
     </tr>
   </tbody>
 </table>
@@ -45,19 +46,20 @@
   <thead>
     <tr>
       <th>Datum</th>
+      <th>Auto ID</th>
       <th>rdx</th>
       <th>rdy</th>
       <th>speed</th>
       <th>course</th>
-      <th>numsatl</th>
+      <th>numsatel</th>
       <th>hdop</th>
       <th>quality</th>
-      <th>unit_id</th>
     </tr>
   </thead>
   <tbody>
-    <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+    <tr dir-paginate="connection in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
       <td>{{ position.datetime }}</td>
+      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.unit_id }}</a></td>
       <td>{{ position.rdx }}</td>
       <td>{{ position.rdy }}</td>
       <td>{{ position.speed }}</td>
@@ -65,7 +67,6 @@
       <td>{{ position.numsatel }}</td>
       <td>{{ position.hdop }}</td>
       <td>{{ position.quality }}</td>
-      <td><a href="/#/unit/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
     </tr>
   </tbody>
 </table>
