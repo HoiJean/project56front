@@ -1,6 +1,6 @@
 app.service('positionService', function($http, $q) {
 	var url = "http://api.webtronix.nl/api/positions";
-	
+
 	this.getPositions = function() {
 		return $http.get(url);
 	}
@@ -9,4 +9,8 @@ app.service('positionService', function($http, $q) {
 	// 	return $http.get(url+"?datetime="+date);
 	// }
 
-});  
+	this.getPositionsByUnit = function(unitId) {
+		return $http.get(url+"?Fromunit="+unitId);
+	}
+
+});

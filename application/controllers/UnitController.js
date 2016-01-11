@@ -1,27 +1,31 @@
-app.controller('UnitController', function($scope, eventService, monitoringService, positionService) {
+app.controller('UnitController', function($scope, connectionService, eventService, monitoringService, positionService, $routeParams) {
 
-	console.log("aa");
-	eventService.getEvents().then(function(response) {
+
+	connectionService.getConnectionsByUnit($routeParams.id).then(function(response) {
+
+		console.log("zou werken");
+		$scope.connections		= response.data;
+		console.log($scope.connections);
+	})
+
+	eventService.getEventsByUnit($routeParams.id).then(function(response) {
 
 		console.log("ik geloof dat het werkt");
-		// let wel op je namen -_-
-
 		$scope.events 				= response.data;
-
-		console.log("oki");
+		console.log($scope.events);
 	});
 
-	monitoringService.getMonitoring().then(function(response) {
+	monitoringService.getMonitoringByUnit($routeParams.id).then(function(response) {
 
 		console.log("werkt");
 	   $scope.monitoring		= response.data;
-		console.log("okay");
+		console.log($scope.monitoring);
 	});
 
-	positionService.getPositions().then(function(response) {
+	positionService.getPositionsByUnit($routeParams.id).then(function(response) {
 		console.log("werkt ook");
 		$scope.positions			= response.data;
-		console.log("ok dan");
+		console.log($scope.positions);
 	});
 
 });

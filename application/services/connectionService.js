@@ -13,5 +13,9 @@ app.service('connectionService', function($http, $q) {
 
 	this.getConnectionsCount = function() {
 		return $http.get(url+"?count");
-	}              
+	}
+
+	this.getConnectionsByUnit = function(unitId) {
+		return $http.get(url+"?Fromunit="+unitId);
+	}
 });
