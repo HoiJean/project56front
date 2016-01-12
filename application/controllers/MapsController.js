@@ -62,7 +62,15 @@ app.controller('MapsController', function($scope, uiGmapGoogleMapApi, uiGmapLogg
 
 
 				// pos.title = currentUnit.datetime;
+				
+				if( currentUnit.numsatel > 7) {
+					// pos.icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+					pos.icon = "http://maps.google.com/mapfiles/ms/icons/green-dot.png";
+				}
 
+				if( currentUnit.speed == 0 ) {
+					pos.icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png";
+				}
 				pos.title = {date: unitDate.toLocaleString(), speed: currentUnit.speed, quality: currentUnit.quality};
 				pos.options = {labelContent:"Markers id 3",labelAnchor:"26 0",labelClass:"marker-labels"};
 

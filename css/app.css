@@ -91,12 +91,6 @@ template {
    */
 a {
   background-color: transparent; }
-a {
-  color: ##00ffbf;
-}
-a.normal {
-  font-weight: bold;
-}
 
 /**
    * Improve readability of focused elements when they are also in an
