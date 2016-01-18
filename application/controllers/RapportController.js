@@ -1,6 +1,6 @@
 app.controller('RapportController', function($scope, connectionService, eventService, monitoringService) {
 
-	connectionService.getConnections().then(function(response) {
+	connectionService.getConnectionsByUnique().then(function(response) {
 
 		$scope.connections 		= response.data;
 	});
@@ -15,6 +15,15 @@ app.controller('RapportController', function($scope, connectionService, eventSer
 		 $scope.monitoring		= response.data;
 
 	 });
+
+
+	$scope.connectionsNav = function(moreOrLess) {
+
+	    var counter = counter++;
+
+	    console.log("FUNCTIE WERKT" + " " + moreOrLess + " " + counter);
+	}
+
  });
 
 	//  connectionService.getEvents().then(function(response) {
