@@ -90,12 +90,7 @@ template {
    * Remove the gray background color from active links in IE 10.
    */
 a {
-  background-color: transparent;
-   }
-
-table a {
-  color: red!important;
-}
+  background-color: transparent; }
 
 /**
    * Improve readability of focused elements when they are also in an
@@ -3861,3 +3856,9 @@ body {
 
 .angular-google-map-container {
   height: 600px; }
+
+a {
+  background-color: transparent; }
+
+table a {
+  color: red !important; }
