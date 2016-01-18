@@ -1,6 +1,11 @@
 app.controller('DashboardController', function($scope, connectionService, eventService, monitoringService) {
 	$scope.message = "Connecties uit angular";
 
+	/**
+	 * Filter connections by date
+	 * @param  {date} date 
+	 * @return {array}    
+	 */
 	$scope.getConnectionsByDate = function(date) {
 		connectionService.getConnectionsByDate(date).then(function(response) {
 			var count = response.data.length;
@@ -19,9 +24,6 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 			}
 
 			$scope.data = output;
-
-			console.log($scope.data);
-			console.log(allConnections);
 
 		});
 	}
@@ -56,7 +58,7 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 	connectionService.getConnections().then(function(response) {
 		// Connections
-		// $scope.connectionsCount = response.data.length;
+		$scope.connectionsCount = response.data.length;
 		// $scope.data = [];
 		$scope.selectData = [];
 
@@ -94,7 +96,6 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 	});
 
 	connectionService.getConnectionsCount().then(function(response) {
-		console.log(response.data);
 		$scope.connectionsCount = response.data;
 	});
 
