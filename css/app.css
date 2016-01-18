@@ -90,11 +90,11 @@ template {
    * Remove the gray background color from active links in IE 10.
    */
 a {
-  /*background-color: transparent;*/
+  background-color: transparent;
    }
 
 table a {
-  color: transparent!important;
+  color: red!important;
 }
 
 /**
