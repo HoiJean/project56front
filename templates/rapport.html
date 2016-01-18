@@ -98,5 +98,44 @@
                   </dir-pagination-controls>
             </div>
 
+            <div class="medium-12">
 
-        </div>
+              <h2>Position</h2>
+
+              <table width="100%">
+                <thead>
+                  <tr>
+                    <th>Datum</th>
+                    <th>Auto ID</th>
+                    <th>rdx</th>
+                    <th>rdy</th>
+                    <th>speed</th>
+                    <th>course</th>
+                    <th>numsatel</th>
+                    <th>hdop</th>
+                    <th>quality</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                    <td>{{ position.datetime }}</td>
+                    <td><a href="/#/unit/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
+                    <td>{{ position.rdx }}</td>
+                    <td>{{ position.rdy }}</td>
+                    <td>{{ position.speed }}</td>
+                    <td>{{ position.course }}</td>
+                    <td>{{ position.numsatel }}</td>
+                    <td>{{ position.hdop }}</td>
+                    <td>{{ position.quality }}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+                <dir-pagination-controls
+                  max-size="5"
+                  direction-links="true"
+                  boundary-links="true" >
+                </dir-pagination-controls>
+            </div>
+
+  </div>
