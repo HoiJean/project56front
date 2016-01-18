@@ -16,7 +16,7 @@
                   <tbody>
                     <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
                       <td>{{ connection.Datetime }}</td>
-                      <td>{{ connection.Value }}</td>
+                      <td>{{ connection.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
                       <td>{{ connection.Port }}</td>
                       <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
                     </tr>
@@ -48,7 +48,7 @@
                   <tbody>
                     <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
                       <td>{{ event.Datetime }}</td>
-                      <td>{{ event.Value }}</td>
+                      <td>{{ event.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
                       <td>{{ event.port }}</td>
                       <td><a href="/#/unit/{{ event.unit_id }}">{{ event.unit_id }}</a></td>
                     </tr>
