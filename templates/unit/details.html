@@ -1,98 +1,101 @@
+<div class="row">
+  <div class="medium-12">
+  <h1>Connections</h1>
 
-<h1>Connections</h1>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Verbonden</th>
+        <th>Port</th>
+        <th>Auto ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+        <td>{{ connection.Datetime }}</td>
+        <td>{{ connection.Value }}</td>
+        <td>{{ connection.Port }}</td>
+        <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
+      </tr>
+    </tbody>
+  </table>
 
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Datum</th>
-      <th>Verbonden</th>
-      <th>Port</th>
-      <th>Auto ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ connection.Datetime }}</td>
-      <td>{{ connection.Value }}</td>
-      <td>{{ connection.Port }}</td>
-      <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
-    </tr>
-  </tbody>
-</table>
+  <h1>Events</h1>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Verbonden</th>
+        <th>Port</th>
+        <th>Auto ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+        <td>{{ event.Datetime }}</td>
+        <td>{{ event.Value }}</td>
+        <td>{{ event.port }}</td>
+        <td><a href="/#/unit/{{ event.unit_id }}">{{ event.unit_id }}</a></td>
+      </tr>
+    </tbody>
+  </table>
 
-<h1>Events</h1>
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Datum</th>
-      <th>Verbonden</th>
-      <th>Port</th>
-      <th>Auto ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ event.Datetime }}</td>
-      <td>{{ event.Value }}</td>
-      <td>{{ event.port }}</td>
-      <td><a href="/#/unit/{{ event.unit_id }}">{{ event.unit_id }}</a></td>
-    </tr>
-  </tbody>
-</table>
+  <h1>Monitoring</h1>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th>Begin datum</th>
+        <th>Eind datum</th>
+        <th>Type</th>
+        <th>Min</th>
+        <th>Max</th>
+        <th>Sum</th>
+        <th>Auto ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+        <td>{{ monitoring.Begin_time }}</td>
+        <td>{{ monitoring.End_time }}</td>
+        <td>{{ monitoring.Type }}</td>
+        <td>{{ monitoring.Min }}</td>
+        <td>{{ monitoring.Max }}</td>
+        <td>{{ monitoring.Sum }}</td>
+        <td><a href="/#/unit/{{ monitoring.Unit_id }}">{{ monitoring.Unit_id }}</a></td>
+      </tr>
+    </tbody>
+  </table>
 
-<h1>Monitoring</h1>
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Begin datum</th>
-      <th>Eind datum</th>
-      <th>Type</th>
-      <th>Min</th>
-      <th>Max</th>
-      <th>Sum</th>
-      <th>Auto ID</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ monitoring.Begin_time }}</td>
-      <td>{{ monitoring.End_time }}</td>
-      <td>{{ monitoring.Type }}</td>
-      <td>{{ monitoring.Min }}</td>
-      <td>{{ monitoring.Max }}</td>
-      <td>{{ monitoring.Sum }}</td>
-      <td><a href="/#/unit/{{ monitoring.Unit_id }}">{{ monitoring.Unit_id }}</a></td>
-    </tr>
-  </tbody>
-</table>
-
-  
-<h1>Position</h1>
-<table width="100%">
-  <thead>
-    <tr>
-      <th>Datum</th>
-      <th>Auto ID</th>
-      <th>rdx</th>
-      <th>rdy</th>
-      <th>speed</th>
-      <th>course</th>
-      <th>numsatel</th>
-      <th>hdop</th>
-      <th>quality</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
-      <td>{{ position.datetime }}</td>
-      <td><a href="/#/maps/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
-      <td>{{ position.rdx }}</td>
-      <td>{{ position.rdy }}</td>
-      <td>{{ position.speed }}</td>
-      <td>{{ position.course }}</td>
-      <td>{{ position.numsatel }}</td>
-      <td>{{ position.hdop }}</td>
-      <td>{{ position.quality }}</td>
-    </tr>
-  </tbody>
-</table>
+    
+  <h1>Position</h1>
+  <table width="100%">
+    <thead>
+      <tr>
+        <th>Datum</th>
+        <th>Auto ID</th>
+        <th>rdx</th>
+        <th>rdy</th>
+        <th>speed</th>
+        <th>course</th>
+        <th>numsatel</th>
+        <th>hdop</th>
+        <th>quality</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+        <td>{{ position.datetime }}</td>
+        <td><a href="/#/maps/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
+        <td>{{ position.rdx }}</td>
+        <td>{{ position.rdy }}</td>
+        <td>{{ position.speed }}</td>
+        <td>{{ position.course }}</td>
+        <td>{{ position.numsatel }}</td>
+        <td>{{ position.hdop }}</td>
+        <td>{{ position.quality }}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
