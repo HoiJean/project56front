@@ -18,4 +18,8 @@ app.service('connectionService', function($http, $q) {
 	this.getConnectionsByUnit = function(unitId) {
 		return $http.get(url+"?Fromunit="+unitId);
 	}
+
+	this.getConnectionsByUnique = function() {
+		return $http.get(url+"?GetconnectionsSorted");
+	}
 });
