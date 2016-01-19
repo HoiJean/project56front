@@ -2,7 +2,7 @@
         <div class="row">
             <div class="medium-12">
 
-                <h2>Connecties</h2>
+                <h2>Connections</h2>
 
                 <table width="100%">
                   <thead>
@@ -14,7 +14,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                    <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage: pageSize" pagination-id="Connections" current-page="currentPage">
                       <td>{{ connection.Datetime }}</td>
                       <td>{{ connection.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
                       <td>{{ connection.Port }}</td>
@@ -24,12 +24,13 @@
                 </table>
 
                   <dir-pagination-controls
-                    max-size="5"
                     direction-links="true"
-                    boundary-links="true" >
+                    boundary-links="true"
+                    pagination-id="Connections"
+                    template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html" >
                   </dir-pagination-controls>
 
-                  <a href="#/rapport" ng-click="connectionsNav('plus')" ng-init="counter=0">Next</a>
+                  <!-- <a href="#/rapport" ng-click="connectionsNav('plus')" ng-init="counter=0">Next</a> -->
             </div>
 
             <div class="medium-12">
@@ -46,7 +47,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                    <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage: pageSize" pagination-id="Events">
                       <td>{{ event.Datetime }}</td>
                       <td>{{ event.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
                       <td>{{ event.port }}</td>
@@ -56,9 +57,10 @@
                 </table>
 
                   <dir-pagination-controls
-                    max-size="5"
                     direction-links="true"
-                    boundary-links="true" >
+                    boundary-links="true"
+                    pagination-id="Events"
+                    template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html" >
                   </dir-pagination-controls>
             </div>
 
@@ -79,7 +81,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                    <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage: pageSize" pagination-id="Monitoring">
                       <td>{{ monitoring.Begin_time }}</td>
                       <td>{{ monitoring.End_time }}</td>
                       <td>{{ monitoring.Type }}</td>
@@ -92,9 +94,10 @@
                 </table>
 
                   <dir-pagination-controls
-                    max-size="5"
                     direction-links="true"
-                    boundary-links="true" >
+                    boundary-links="true"
+                    pagination-id="Monitoring"
+                    template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html" >
                   </dir-pagination-controls>
             </div>
 
@@ -117,7 +120,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5">
+                  <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage: pageSize" pagination-id="Positions">
                     <td>{{ position.datetime }}</td>
                     <td><a href="/#/unit/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
                     <td>{{ position.rdx }}</td>
@@ -132,9 +135,10 @@
               </table>
 
                 <dir-pagination-controls
-                  max-size="5"
                   direction-links="true"
-                  boundary-links="true" >
+                  boundary-links="true"
+                  pagination-id="Positions"
+                  template-url="bower_components/angularUtils-pagination/dirPagination.tpl.html" >
                 </dir-pagination-controls>
             </div>
 

@@ -13,16 +13,16 @@ app.controller('RapportController', function($scope, connectionService, eventSer
 	 monitoringService.getMonitoring().then(function(response) {
 
 		 $scope.monitoring		= response.data;
-
 	 });
 
-
-	$scope.connectionsNav = function(moreOrLess) {
-
-	    var counter = counter++;
-
-	    console.log("FUNCTIE WERKT" + " " + moreOrLess + " " + counter);
-	}
+	 $scope.currentPage = 1;
+	 $scope.pageSize = 5;
+	// $scope.connectionsNav = function(moreOrLess) {
+	//
+	//     var counter = counter++;
+	//
+	//     console.log("FUNCTIE WERKT" + " " + moreOrLess + " " + counter);
+	// }
 
  });
 
