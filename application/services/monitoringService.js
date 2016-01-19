@@ -14,4 +14,13 @@ app.service('monitoringService', function($http, $q) {
 	this.getMonitoringByUnit = function(unitId) {
 		return $http.get(url+"?Fromunit="+unitId);
 	}
+
+	this.getMonitoringUrl = function() {
+		return $http({
+		    method: 'GET',
+		    url: url,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		});
+		
+	}
 });

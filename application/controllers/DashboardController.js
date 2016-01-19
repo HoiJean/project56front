@@ -64,6 +64,16 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 		$scope.connections = response.data;
 
+		connectionService.getConnectionsUrl().then(function(response) {
+			// var obj = connectionService.getConnectionsUrl();
+			var obj = response.data;
+			var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+			$('<a href="data:' + data + '" download="connections.json">download JSON</a>').appendTo('#connectionsDownload');
+		});
+
+		
+
 		for(var i = 0; i < $scope.connectionsCount; i++) {
 			var arr = $scope.connections[i];
 			var datetime = arr.Datetime;
@@ -101,10 +111,26 @@ app.controller('DashboardController', function($scope, connectionService, eventS
 
 	eventService.getEventsCount().then(function(response) {
 		$scope.eventsCount = response.data;
+
+		eventService.getEventsUrl().then(function(response) {
+			// var obj = connectionService.getConnectionsUrl();
+			var obj = response.data;
+			var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+			$('<a href="data:' + data + '" download="events.json">download JSON</a>').appendTo('#eventsDownload');
+		});
 	});
 
 	monitoringService.getMonitoringCount().then(function(response) {
 		$scope.monitoringsCount = response.data;
+
+		monitoringService.getMonitoringUrl().then(function(response) {
+			// var obj = connectionService.getConnectionsUrl();
+			var obj = response.data;
+			var data = "text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(obj));
+
+			$('<a href="data:' + data + '" download="monitoring.json">download JSON</a>').appendTo('#monitoringDownload');
+		});
 	});
 
 });

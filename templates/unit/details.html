@@ -13,7 +13,7 @@
     </thead>
     <tbody>
       <tr dir-paginate="connection in connections|orderBy:sortKey:reverse|filter:search|itemsPerPage:5" pagination-id="Connections">
-        <td>{{ connection.Datetime }}</td>
+        <td>{{ connection.Datetime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ connection.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
         <td>{{ connection.Port }}</td>
         <td><a href="/#/unit/{{ connection.Unit_id }}">{{ connection.Unit_id }}</a></td>
@@ -40,7 +40,7 @@
     </thead>
     <tbody>
       <tr dir-paginate="event in events|orderBy:sortKey:reverse|filter:search|itemsPerPage:5" pagination-id="Events">
-        <td>{{ event.Datetime }}</td>
+        <td>{{ event.Datetime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ event.Value ? 'Verbonden' : 'Niet verbonden' }}</td>
         <td>{{ event.port }}</td>
         <td><a href="/#/unit/{{ event.unit_id }}">{{ event.unit_id }}</a></td>
@@ -70,8 +70,8 @@
     </thead>
     <tbody>
       <tr dir-paginate="monitoring in monitoring|orderBy:sortKey:reverse|filter:search|itemsPerPage:5" pagination-id="Monitoring">
-        <td>{{ monitoring.Begin_time }}</td>
-        <td>{{ monitoring.End_time }}</td>
+        <td>{{ monitoring.Begin_time | date:'yyyy-MM-dd HH:mm:ss' }}</td>
+        <td>{{ monitoring.End_time | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td>{{ monitoring.Type }}</td>
         <td>{{ monitoring.Min }}</td>
         <td>{{ monitoring.Max }}</td>
@@ -105,7 +105,7 @@
     </thead>
     <tbody>
       <tr dir-paginate="position in positions|orderBy:sortKey:reverse|filter:search|itemsPerPage:5" pagination-id="Positions">
-        <td>{{ position.datetime }}</td>
+        <td>{{ position.datetime | date:'yyyy-MM-dd HH:mm:ss' }}</td>
         <td><a href="/#/maps/{{ position.unit_id }}">{{ position.unit_id }}</a></td>
         <td>{{ position.rdx }}</td>
         <td>{{ position.rdy }}</td>

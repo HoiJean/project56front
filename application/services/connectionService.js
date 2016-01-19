@@ -22,4 +22,13 @@ app.service('connectionService', function($http, $q) {
 	this.getConnectionsByUnique = function() {
 		return $http.get(url+"?GetconnectionsSorted");
 	}
+
+	this.getConnectionsUrl = function() {
+		return $http({
+		    method: 'GET',
+		    url: url,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		});
+		
+	}
 });
