@@ -14,4 +14,13 @@ app.service('eventService', function($http, $q) {
 	this.getEventsByUnit = function(unitId) {
 		return $http.get(url+"?Fromunit="+unitId);
 	}
+
+	this.getEventsUrl = function() {
+		return $http({
+		    method: 'GET',
+		    url: url,
+		    headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+		});
+		
+	}
 });
